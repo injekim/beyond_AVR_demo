@@ -251,7 +251,7 @@ LIST_KIA_SIDE = [
 	'기아_프라이드_프라이드(신형)'
 ]
 
-LIST_HYN_FRONT = {
+LIST_HYN_FRONT = [
 	'제네시스_EQ900_EQ900',
 	'제네시스_G70_G70',
 	'제네시스_G80_G80',
@@ -318,9 +318,9 @@ LIST_HYN_FRONT = {
 	'현대_투싼_투싼',
 	'현대_투싼_투싼 ix',
 	'현대_팰리세이드_팰리세이드'
-}
+]
 
-LIST_HYN_BACK = {
+LIST_HYN_BACK = [
 	'제네시스_EQ900_EQ900',
 	'제네시스_G70_G70',
 	'제네시스_G80_G80',
@@ -386,9 +386,9 @@ LIST_HYN_BACK = {
 	'현대_투싼_투싼',
 	'현대_투싼_투싼 ix',
 	'현대_팰리세이드_팰리세이드'
-}
+]
 
-LIST_HYN_SIDE = {
+LIST_HYN_SIDE = [
 	'제네시스_EQ900_EQ900',
 	'제네시스_G70_G70',
 	'제네시스_G80_G80',
@@ -450,7 +450,7 @@ LIST_HYN_SIDE = {
 	'현대_투싼_투싼',
 	'현대_투싼_투싼 ix',
 	'현대_팰리세이드_팰리세이드'
-}
+]
 
 DICT_KIA = {
 	"front": LIST_KIA_FRONT,
