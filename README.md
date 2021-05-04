@@ -9,7 +9,7 @@
 ![demo_3](/images/demo_3.png)
 
 ## Train results
-![train_graph](/images/train_graph.png)
+![train_graph](/images/train_plt.png)
 
 ### Final score
 | loss   | acc.   | val_loss   | val_acc. |
