@@ -48,14 +48,14 @@ def merge_with_heatmap(original_img, heatmap):
 	return cv2.addWeighted(heatmap, 0.5, original_img, 0.5, 0)
 
 # calculate patch coordinates
-def patch_coord(img, width, height, PATCH_SIZE):
+def patch_coord(img, width, height, PATCH_SIZE, STEP_SIZE):
 	x0, x1 = 0, PATCH_SIZE
 	y0, y1 = 0, PATCH_SIZE
 	coords = []
 	
 	while True:
 		coords.append([[x0, y0], [x1, y1], []])
-		x0, x1 = x0 + (PATCH_SIZE - PATCH_OVERLAP), x1 + (PATCH_SIZE - PATCH_OVERLAP)
+		x0, x1 = x0 + STEP_SIZE, x1 + STEP_SIZE
 		
 		if x1 > width:
 			x0, x1 = width - PATCH_SIZE, width
@@ -64,7 +64,7 @@ def patch_coord(img, width, height, PATCH_SIZE):
 		if x1 >= width:
 			if y1 < height:
 				x0, x1 = 0, PATCH_SIZE
-				y0, y1 = y0 + (PATCH_SIZE - PATCH_OVERLAP), y1 + (PATCH_SIZE - PATCH_OVERLAP)
+				y0, y1 = y0 + STEP_SIZE, y1 + STEP_SIZE
 		  
 			if y1 > height:
 				y0, y1 = height - PATCH_SIZE, height
@@ -125,7 +125,7 @@ def damage_overlay(img, damage, coords):
 	return add_overlay(temp, mask_and, cv2.COLORMAP_PLASMA)
 
 # detect vehicle orientation 
-def detect_orientation(img):
+def detect_orientation(img, ANGLE_FRONT_MAX, ANGLE_SIDE_MAX, MODEL_ORIEN, DICT_OREN):
 	cid, prob, x = predict(img, MODEL_ORIEN)
 	angle = DICT_OREN[str(cid)].split("_")
 	angle_h = int(angle[0][1:])
@@ -139,7 +139,7 @@ def detect_orientation(img):
 		return 2, "back", prob, cid, x
 
 # detect vehicle model
-def detect_vehicle(img, orien):
+def detect_vehicle(img, orien, MODEL_VEH, DICT_VEH):
 	cid_k, prob_k, x_k = predict(img, MODEL_VEH['kia'][orien])
 	cid_h, prob_h, x_h = predict(img, MODEL_VEH['hyn'][orien])
 	
@@ -151,8 +151,8 @@ def detect_vehicle(img, orien):
 	return mfr, DICT_VEH[mfr][orien][cid_k], prob, cid, x
 
 # detect vehicle damage
-def detect_damage(img, width, height):
-	coords = patch_coord(img, width, height, PATCH_SIZE)
+def detect_damage(img, width, height, PATCH_SIZE, STEP_SIZE, DENT_THLD, SCRATCH_THLD, MODEL_DMG):
+	coords = patch_coord(img, width, height, PATCH_SIZE, STEP_SIZE)
 	patches = vstack_patch(img, coords)
 	
 	probs = MODEL_DMG.predict(patches)
