@@ -4,12 +4,12 @@
 ## Demo results
 > blue: dent, red: scratch
 
-![demo result 1](/images/demo_1.png)
-![demo result 2](/images/demo_2.png)
-![demo result 3](/images/demo_3.png)
+![demo_1](/images/demo_1.png)
+![demo_2](/images/demo_2.png)
+![demo_3](/images/demo_3.png)
 
 ## Train results
-![train graph](/images/train_graph.png)
+![train_graph](/images/train_graph.png)
 
 ### Final score
 | loss   | acc.   | val_loss   | val_acc. |
