@@ -1,1 +1,4 @@
-# beyond_AVR_demo
+# 🚙 beyond_AVR demo
+> Vehicle damage detection using CNN
+
+
