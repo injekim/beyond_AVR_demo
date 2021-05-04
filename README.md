@@ -9,6 +9,7 @@
 ![demo_3](/images/demo_3.png)
 
 ## Train results
+### loss / accuracy plot
 ![train_graph](/images/train_plt.png)
 
 ### Final score
