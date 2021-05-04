@@ -120,7 +120,7 @@ def add_overlay(img, mask, colormap):
 
 # add overlay to text
 def text_overlay(img, x, y, strng, val, STEP_SIZE):
-	font_scale = STEP_SIZE/15
+	font_scale = STEP_SIZE/160
 	patch = cv2.putText(img, "{}{:.4f}".format(strng, val), (x, y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), 1, cv2.LINE_AA) 
 
 # create and merge damage overlay
